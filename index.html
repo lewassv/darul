@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA 3D - Showcase Antarmuka Web 3D Eksklusif</title>
+  <meta name="description" content="Pengalaman Web 3D Interaktif Eksklusif berbasis HTML5, Three.js, dan Glassmorphism CSS Design. Nikmati visualisasi 3D real-time dengan kendali bentuk dan pencahayaan dinamis.">
+  
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Three.js & OrbitControls CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+  <!-- 3D WebGL Canvas Layer -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Application Overlay Layer -->
+  <div class="app-container">
+
+    <!-- Header Navigation Bar -->
+    <header class="navbar interactive">
+      <a href="#" class="brand">
+        <div class="brand-icon">A</div>
+        <span class="brand-title">AURA 3D</span>
+      </a>
+      
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span>WebGL 2.0 Active</span>
+      </div>
+    </header>
+
+    <!-- Main Content Hero & Controls -->
+    <main>
+      <section class="hero">
+        <!-- Hero Text -->
+        <div class="hero-content">
+          <div class="badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Next-Gen Spatial UI
+          </div>
+          
+          <h1 class="hero-title">
+            Pengalaman Web 3D <span>Eksklusif & Interaktif</span>
+          </h1>
+          
+          <p class="hero-desc">
+            Nikmati rendering objek 3D real-time berestetika tinggi langsung di browser Anda. Dilengkapi simulasi pencahayaan fisik, efek glassmorphism, dan kontrol spasial responsif.
+          </p>
+          
+          <div class="hero-actions interactive">
+            <a href="#features" class="btn btn-primary">
+              Eksplorasi Fitur
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <button class="btn btn-glass" onclick="window.scrollTo({top: 600, behavior: 'smooth'})">
+              Pelajari Lebih Lanjut
+            </button>
+          </div>
+        </div>
+
+        <!-- 3D Interactive Control Dock -->
+        <div class="control-dock interactive" id="control-dock">
+          <div class="dock-header">
+            <span class="dock-title">Studio 3D Controls</span>
+            <span class="badge" style="font-size:0.75rem; padding: 0.2rem 0.6rem;">Real-time</span>
+          </div>
+
+          <!-- Geometry Selector -->
+          <div class="control-group">
+            <span class="control-label">Pilih Geometri 3D</span>
+            <div class="option-grid">
+              <button class="option-btn active" data-shape="diamond" id="shape-diamond">Diamond</button>
+              <button class="option-btn" data-shape="torus" id="shape-torus">Quantum Knot</button>
+              <button class="option-btn" data-shape="icosahedron" id="shape-icosa">Icosahedron</button>
+              <button class="option-btn" data-shape="crystal" id="shape-crystal">Crystal Mesh</button>
+            </div>
+          </div>
+
+          <!-- Color Theme Picker -->
+          <div class="control-group">
+            <span class="control-label">Skema Warna & Tema Lighting</span>
+            <div class="color-picker">
+              <div class="color-dot gold active" data-theme="gold" title="Luxury Gold" id="theme-gold"></div>
+              <div class="color-dot neon" data-theme="neon" title="Cyber Neon" id="theme-neon"></div>
+              <div class="color-dot purple" data-theme="purple" title="Royal Violet" id="theme-purple"></div>
+              <div class="color-dot emerald" data-theme="emerald" title="Deep Emerald" id="theme-emerald"></div>
+            </div>
+          </div>
+
+          <!-- Auto-Rotate Toggle -->
+          <div class="control-group">
+            <div class="toggle-row">
+              <span class="control-label">Rotasi Otomatis Kamera</span>
+              <label class="switch">
+                <input type="checkbox" id="rotate-toggle" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Wireframe Toggle -->
+          <div class="control-group">
+            <div class="toggle-row">
+              <span class="control-label">Mode Wireframe 3D</span>
+              <label class="switch">
+                <input type="checkbox" id="wireframe-toggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Cards Section -->
+      <section class="features-section" id="features">
+        <div class="section-header">
+          <h2 class="section-title">Fitur Antarmuka Eksklusif</h2>
+          <p style="color: var(--text-secondary); margin-top: 0.5rem;">Desain spasial modern yang dirancang untuk performa dan kenyamanan pengguna.</p>
+        </div>
+
+        <div class="feature-grid">
+          <!-- Card 1 -->
+          <div class="card-3d interactive">
+            <div class="card-icon">⚡</div>
+            <h3 class="card-title">Real-Time Lighting</h3>
+            <p class="card-text">
+              Pencahayaan fisik tingkat lanjut (`MeshPhysicalMaterial`) dengan refleksi dan bayangan dinamis sesuai posisi kursor.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card-3d interactive">
+            <div class="card-icon">💎</div>
+            <h3 class="card-title">Aestetik Glassmorphism</h3>
+            <p class="card-text">
+              UI overlay transparan bertekstur kaca dengan efek blur mendalam dan aksen cahaya neomorphic yang mewah.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card-3d interactive">
+            <div class="card-icon">🌌</div>
+            <h3 class="card-title">Awan Partikel Spasial</h3>
+            <p class="card-text">
+              Ribuan partikel nebula bergerak dinamis mengelilingi objek 3D untuk menciptakan kedalaman atmosfer antariksa.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Real-Time Metrics HUD Overlay -->
+    <div class="hud-panel interactive" id="hud-panel">
+      <div class="hud-item">
+        <span>FPS</span>
+        <span class="hud-val" id="hud-fps">60</span>
+      </div>
+      <div class="hud-item">
+        <span>VERTICES</span>
+        <span class="hud-val" id="hud-poly">--</span>
+      </div>
+      <div class="hud-item">
+        <span>CAMERA COORD</span>
+        <span class="hud-val" id="hud-cam">0.0, 1.5, 7.5</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 AURA 3D Studio. All rights reserved. Created with HTML5, Vanilla CSS & Three.js.</p>
+    </footer>
+  </div>
+
+  <!-- Main JavaScript Engine -->
+  <script src="main.js"></script>
+</body>
+</html>
